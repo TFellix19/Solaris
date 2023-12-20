@@ -23,7 +23,7 @@ export default function Navbar() {
                 <div className="flex flex-shrink-0 items-center">
                   <img
                     className="h-8 w-auto"
-                    src="../../public/favicons/projectsolaris.png"
+                    src="../../../favicons/projectsolaris.png"
                     alt="project Solaris"
                   />
                 </div>
