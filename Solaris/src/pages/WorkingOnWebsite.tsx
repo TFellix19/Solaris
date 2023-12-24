@@ -18,7 +18,7 @@ function WorkingOnWebsite() {
           justifyContent: 'center',
           fontWeight: 'bold',
         }}>
-        <img src="../../public/favicons/projectsolaris.png" alt="projectsolaris" />
+        <img src="../../../favicons/projectsolaris.png" alt="projectsolaris" />
       </div>
       <h1 style={{ fontSize: '6em', marginBottom: '10px',display: 'flex',
           alignItems: 'center',
