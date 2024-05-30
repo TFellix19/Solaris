@@ -1,11 +1,12 @@
 import { Disclosure } from '@headlessui/react';
 import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline';
+import { useLocation } from 'react-router-dom';
 
 const navigation = [
-  { name: 'Inicio', href: '#', current: true },
-  { name: 'Explorar', href: '#', current: false },
-  { name: 'Sobre nós', href: '#', current: false },
-  { name: 'Galeria', href: '#', current: false },
+  { name: 'Inicio', href: '/home', current: false },
+  { name: 'Explorar', href: '/explorar', current: false },
+  { name: 'Sobre nós', href: '/sobre-nos', current: false },
+  { name: 'Galeria', href: '/gallery', current: false },
 ];
 
 function classNames(...classes: string[]): string {
@@ -13,6 +14,14 @@ function classNames(...classes: string[]): string {
 }
 
 export default function Navbar() {
+  const location = useLocation();
+  const currentPath = location.pathname;
+
+  const updatedNavigation = navigation.map(item => ({
+    ...item,
+    current: item.href === currentPath,
+  }));
+
   return (
     <Disclosure as="nav" className="bg-white">
       {({ open }) => (
@@ -22,15 +31,15 @@ export default function Navbar() {
               <div className="flex flex-1 items-center justify-center sm:items-stretch sm:justify-start">
                 <div className="flex flex-shrink-0 items-center">
                   <img
-                    className="h-8 w-auto"
-                    src="../../../favicons/projectsolaris.png"
+                    className="h-12 w-auto"
+                    src="/favicons/projectsolaris.png"
                     alt="project Solaris"
                   />
                 </div>
               </div>
               <div className="absolute inset-y-0 right-0 flex items-center pr-2 sm:hidden">
                 <Disclosure.Button
-                  className="relative inline-flex items-center justify-center rounded-md p-2 text-gray-900 hover:bg-gray-700 hover:text-white focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white"
+                  className="relative inline-flex items-center justify-center rounded-md p-2 text-gray-900 bg-light-green-logo hover:text-white focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white"
                 >
                   <span className="absolute -inset-0.5" />
                   <span className="sr-only">abrir o menu</span>
@@ -43,7 +52,7 @@ export default function Navbar() {
               </div>
               <div className="hidden sm:ml-6 sm:block">
                 <div className="flex space-x-4">
-                  {navigation.map((item) => (
+                  {updatedNavigation.map(item => (
                     <a
                       key={item.name}
                       href={item.href}
@@ -51,7 +60,7 @@ export default function Navbar() {
                         item.current
                           ? ' text-black border-b-2 border-gray-300'
                           : 'text-gray-300 hover:text-black hover:border-b hover:border-gray-300',
-                          ' px-3 py-2 text-sm font-medium transition-all duration-300 ease-in-out'
+                        ' px-3 py-2 text-sm font-medium transition-all duration-300 ease-in-out'
                       )}
                       aria-current={item.current ? 'page' : undefined}
                     >
@@ -65,15 +74,15 @@ export default function Navbar() {
 
           <Disclosure.Panel className="sm:hidden">
             <div className="space-y-1 px-2 pb-3 pt-2">
-              {navigation.map((item) => (
+              {updatedNavigation.map(item => (
                 <Disclosure.Button
                   key={item.name}
                   as="a"
                   href={item.href}
                   className={classNames(
                     item.current
-                      ? 'bg-gray-900 text-black'
-                      : 'text-gray-900 hover:bg-gray-700 ',
+                      ? 'bg-green-logo text-white'
+                      : 'text-gray-900 bg-light-green-logo',
                     'block rounded-md px-3 py-2 text-base font-medium'
                   )}
                   aria-current={item.current ? 'page' : undefined}
