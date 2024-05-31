@@ -23,7 +23,7 @@ export default function Navbar() {
   }));
 
   return (
-    <Disclosure as="nav" className="bg-white">
+    <Disclosure as="nav" className="bg-white fixed top-0 w-full z-10">
       {({ open }) => (
         <>
           <div className="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">
@@ -58,9 +58,9 @@ export default function Navbar() {
                       href={item.href}
                       className={classNames(
                         item.current
-                          ? ' text-black border-b-2 border-gray-300'
+                          ? 'text-black border-b-2 border-green-logo'
                           : 'text-gray-300 hover:text-black hover:border-b hover:border-gray-300',
-                        ' px-3 py-2 text-sm font-medium transition-all duration-300 ease-in-out'
+                        'px-3 py-2 text-sm font-medium transition-all duration-300 ease-in-out'
                       )}
                       aria-current={item.current ? 'page' : undefined}
                     >
