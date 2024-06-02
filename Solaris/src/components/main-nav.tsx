@@ -1,26 +1,51 @@
+import { useEffect, useState } from "react";
 import { Disclosure } from '@headlessui/react';
 import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline';
 import { useLocation } from 'react-router-dom';
 
-const navigation = [
-  { name: 'Inicio', href: '/home', current: false },
-  { name: 'Explorar', href: '/explorar', current: false },
-  { name: 'Sobre nós', href: '/sobre-nos', current: false },
-  { name: 'Galeria', href: '/gallery', current: false },
-];
+interface NavigationItem {
+  name: string;
+  href: string;
+  current: boolean;
+}
+
+interface NavbarProps {
+  scrollToExplorar: () => void;
+}
 
 function classNames(...classes: string[]): string {
   return classes.filter(Boolean).join(' ');
 }
 
-export default function Navbar() {
+export default function Navbar({ scrollToExplorar }: NavbarProps) {
   const location = useLocation();
   const currentPath = location.pathname;
 
-  const updatedNavigation = navigation.map(item => ({
-    ...item,
-    current: item.href === currentPath,
-  }));
+  const [navigation, setNavigation] = useState<NavigationItem[]>([
+    { name: 'Inicio', href: '/home', current: false },
+    { name: 'Explorar', href: '#explorarRef', current: false },
+    { name: 'Sobre nós', href: '/sobre-nos', current: false },
+    { name: 'Galeria', href: '/gallery', current: false },
+  ]);
+
+  useEffect(() => {
+    const updatedNavigation = navigation.map(item => ({
+      ...item,
+      current: item.href === currentPath,
+    }));
+
+    setNavigation(updatedNavigation);
+  }, [currentPath]);
+
+  const handleExploreClick = () => {
+    const updatedNavigation = navigation.map(item => ({
+      ...item,
+      current: item.name === 'Explorar',
+    }));
+
+    setNavigation(updatedNavigation);
+    scrollToExplorar(); // Scroll para a segunda seção após atualizar o estado
+  };
 
   return (
     <Disclosure as="nav" className="bg-white fixed top-0 w-full z-10">
@@ -52,10 +77,15 @@ export default function Navbar() {
               </div>
               <div className="hidden sm:ml-6 sm:block">
                 <div className="flex space-x-4">
-                  {updatedNavigation.map(item => (
+                  {navigation.map((item: NavigationItem) => (
                     <a
                       key={item.name}
                       href={item.href}
+                      onClick={() => {
+                        if (item.name === 'Explorar') {
+                          handleExploreClick();
+                        }
+                      }}
                       className={classNames(
                         item.current
                           ? 'text-black border-b-2 border-green-logo'
@@ -74,7 +104,7 @@ export default function Navbar() {
 
           <Disclosure.Panel className="sm:hidden">
             <div className="space-y-1 px-2 pb-3 pt-2">
-              {updatedNavigation.map(item => (
+              {navigation.map((item: NavigationItem) => (
                 <Disclosure.Button
                   key={item.name}
                   as="a"

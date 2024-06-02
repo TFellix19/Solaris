@@ -8,10 +8,7 @@ function Gallery() {
   return (
     <>
       <Navbar />
-      
-    
-      <Gloadingimages />
-
+        <Gloadingimages />
       <Footer />
     </>
   );
