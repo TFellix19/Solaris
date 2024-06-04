@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { Disclosure } from '@headlessui/react';
 import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline';
-import { useLocation } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 
 interface NavigationItem {
   name: string;
@@ -10,7 +10,7 @@ interface NavigationItem {
 }
 
 interface NavbarProps {
-  scrollToExplorar: () => void;
+  scrollToExplorar?: () => void;
 }
 
 function classNames(...classes: string[]): string {
@@ -19,6 +19,7 @@ function classNames(...classes: string[]): string {
 
 export default function Navbar({ scrollToExplorar }: NavbarProps) {
   const location = useLocation();
+  const navigate = useNavigate();
   const currentPath = location.pathname;
 
   const [navigation, setNavigation] = useState<NavigationItem[]>([
@@ -61,7 +62,11 @@ export default function Navbar({ scrollToExplorar }: NavbarProps) {
     }));
 
     setNavigation(updatedNavigation);
-    scrollToExplorar(); // Scroll para a segunda seção após atualizar o estado
+    if (currentPath === '/gallery') {
+      navigate('/home#explorarRef');
+    } else if (scrollToExplorar) {
+      scrollToExplorar();
+    }
   };
 
   return (
@@ -98,8 +103,9 @@ export default function Navbar({ scrollToExplorar }: NavbarProps) {
                     <a
                       key={item.name}
                       href={item.href}
-                      onClick={() => {
+                      onClick={(e) => {
                         if (item.name === 'Explorar') {
+                          e.preventDefault();
                           handleExploreClick();
                         }
                       }}
@@ -126,6 +132,12 @@ export default function Navbar({ scrollToExplorar }: NavbarProps) {
                   key={item.name}
                   as="a"
                   href={item.href}
+                  onClick={(e) => {
+                    if (item.name === 'Explorar') {
+                      e.preventDefault();
+                      handleExploreClick();
+                    }
+                  }}
                   className={classNames(
                     item.current
                       ? 'bg-green-logo text-white'
