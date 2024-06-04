@@ -28,6 +28,23 @@ export default function Navbar({ scrollToExplorar }: NavbarProps) {
     { name: 'Galeria', href: '/gallery', current: false },
   ]);
 
+  const [isScrolled, setIsScrolled] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY > 50) {
+        setIsScrolled(true);
+      } else {
+        setIsScrolled(false);
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, []);
+
   useEffect(() => {
     const updatedNavigation = navigation.map(item => ({
       ...item,
@@ -48,7 +65,7 @@ export default function Navbar({ scrollToExplorar }: NavbarProps) {
   };
 
   return (
-    <Disclosure as="nav" className="bg-white fixed top-0 w-full z-10">
+    <Disclosure as="nav" className={classNames("fixed top-0 w-full z-10 transition-opacity duration-300", isScrolled ? "bg-white opacity-100" : "bg-white bg-opacity-5")}>
       {({ open }) => (
         <>
           <div className="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">
