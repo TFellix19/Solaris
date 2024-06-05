@@ -3,6 +3,7 @@ import Footer from "../components/footer";
 import Navbar from "../components/main-nav";
 import { motion } from "framer-motion";
 import Card from "../components/card-explorar";
+import CarouselComponent from "../components/carousel";
 
 
 function Home() {
@@ -121,7 +122,7 @@ function Home() {
               Funcionalidades do jogo
             </h2>
           </div>
-       
+          <CarouselComponent />
         </div>
       </section>
 
