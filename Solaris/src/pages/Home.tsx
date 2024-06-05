@@ -4,6 +4,7 @@ import Navbar from "../components/main-nav";
 import { motion } from "framer-motion";
 import Card from "../components/card-explorar";
 
+
 function Home() {
   const explorarRef = useRef<HTMLDivElement | null>(null);
 
@@ -55,7 +56,7 @@ function Home() {
       <section className="w-full min-h-min bg-white text-black p-6 flex items-center justify-center">
         <div className="flex flex-col md:flex-row items-center max-w-screen-lg">
           <div className="md:order-2 flex-shrink-0">
-            <div className="w-40 h-40 md:w-60 md:h-60">
+            <div className="w-40 h-auto md:w-60 md:h-auto">
               <img
                 src="https://i.postimg.cc/9fZwN66H/Pngtree-cute-cozy-colorful-snow-winter-13375397.png"
                 alt="Imagem"
@@ -68,7 +69,8 @@ function Home() {
               Bem-vindo ao Nosso Mundo de Solaris!
             </h2>
             <p className="text-xl">
-              Criámos Solaris, um novo jogo no estilo cozy onde vai poder desenvolver o teu mundo a um nivel sustentavel
+              Criámos Solaris, um novo jogo no estilo cozy onde vai poder
+              desenvolver o teu mundo a um nivel sustentavel
             </p>
           </div>
         </div>
@@ -78,26 +80,48 @@ function Home() {
 
       <section
         ref={explorarRef}
-        className="relative w-full min-h-screen bg-gray-800 text-white p-6"
+        className="relative w-full min-h-screen bg-light-green-logo text-white p-6"
       >
         <div className="items-center mt-20 ml-10">
           <h2 className="text-3xl md:text-5xl font-bold mb-4">
             Explora Solaris
           </h2>
         </div>
-        <div className="flex flex-col items-start mt-10 ml-10 space-y-4">
+        <div className="flex flex-col lg:flex-row items-start mt-10 ml-10 space-y-4 lg:space-y-0 lg:space-x-4">
           <Card
             title="Título do Card"
             description="Esta é uma pequena descrição do card. Pode conter qualquer tipo de informação relevante."
-            imageUrl="https://via.placeholder.com/150"
+            imageUrl="https://i.imgur.com/Ygpa0En.png"
+          />
+          <img
+            className="hidden lg:block w-full lg:w-1/2 h-auto lg:h-64 object-cover"
+            src="https://i.postimg.cc/9fZwN66H/Pngtree-cute-cozy-colorful-snow-winter-13375397.png"
+            alt="teste"
           />
         </div>
-        <div className="flex flex-col items-end mt-10 ml-10 space-y-4">
+        <div className="flex flex-col lg:flex-row items-start mt-10 ml-10 space-y-4 lg:space-y-0 lg:space-x-4">
+          <img
+            className="hidden lg:block w-full lg:w-1/2 h-auto lg:h-64 object-scale-down"
+            src="https://i.postimg.cc/9fZwN66H/Pngtree-cute-cozy-colorful-snow-winter-13375397.png"
+            alt="teste"
+          />
           <Card
             title="Título do Card"
             description="Esta é uma pequena descrição do card. Pode conter qualquer tipo de informação relevante."
-            imageUrl="https://via.placeholder.com/150"
+            imageUrl="https://i.imgur.com/Ygpa0En.png"
           />
+        </div>
+      </section>
+
+      {/* secção Funcionalidades do jogo */}
+      <section className="relative w-full min-h-screen bg-gray-800 text-white p-6">
+        <div className="container mx-auto">
+          <div className="items-center mt-20 ml-10">
+            <h2 className="text-3xl md:text-5xl font-bold mb-4">
+              Funcionalidades do jogo
+            </h2>
+          </div>
+       
         </div>
       </section>
 
