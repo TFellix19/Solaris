@@ -81,7 +81,7 @@ function Home() {
 
       <section
         ref={explorarRef}
-        className="relative w-full min-h-screen bg-light-green-logo text-white p-6"
+        className="relative w-full min-h-screen bg-light-green text-white p-6"
       >
         <div className="items-center mt-20 ml-10">
           <h2 className="text-3xl md:text-5xl font-bold mb-4">
@@ -115,6 +115,7 @@ function Home() {
       </section>
 
       {/* secção Funcionalidades do jogo */}
+
       <section className="relative w-full min-h-screen bg-gray-800 text-white p-6">
         <div className="container mx-auto">
           <div className="items-center mt-20 ml-10">
@@ -122,7 +123,9 @@ function Home() {
               Funcionalidades do jogo
             </h2>
           </div>
+          <div className="p-5">
           <CarouselComponent />
+        </div>
         </div>
       </section>
 
