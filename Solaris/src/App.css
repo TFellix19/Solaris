@@ -22,3 +22,24 @@ a.mailhover:hover{
   text-decoration-style: solid;
   color: #616E39;
 }
+
+/* Personalize as setas */
+.custom-arrow {
+  background: none; /* Remove o fundo */
+  opacity: 1; /* Remove a opacidade */
+  z-index: 10; /* Garante que as setas fiquem acima do conteúdo */
+}
+
+/* Personalize os indicadores */
+.custom-dot {
+  background-color: #cbd5e0; /* Cor para os indicadores não selecionados */
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  display: inline-block;
+  margin: 0 4px;
+}
+
+.custom-dot.selected {
+  background-color: #4a5568; /* Cor para o indicador selecionado */
+}

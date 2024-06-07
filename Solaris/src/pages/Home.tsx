@@ -5,7 +5,6 @@ import { motion } from "framer-motion";
 import Card from "../components/card-explorar";
 import CarouselComponent from "../components/carousel";
 
-
 function Home() {
   const explorarRef = useRef<HTMLDivElement | null>(null);
 
@@ -83,34 +82,36 @@ function Home() {
         ref={explorarRef}
         className="relative w-full min-h-screen bg-light-green text-white p-6"
       >
-        <div className="items-center mt-20 ml-10">
-          <h2 className="text-3xl md:text-5xl font-bold mb-4">
-            Explora Solaris
-          </h2>
-        </div>
-        <div className="flex flex-col lg:flex-row items-start mt-10 ml-10 space-y-4 lg:space-y-0 lg:space-x-4">
-          <Card
-            title="Título do Card"
-            description="Esta é uma pequena descrição do card. Pode conter qualquer tipo de informação relevante."
-            imageUrl="https://i.imgur.com/Ygpa0En.png"
-          />
-          <img
-            className="hidden lg:block w-full lg:w-1/2 h-auto lg:h-64 object-cover"
-            src="https://i.postimg.cc/9fZwN66H/Pngtree-cute-cozy-colorful-snow-winter-13375397.png"
-            alt="teste"
-          />
-        </div>
-        <div className="flex flex-col lg:flex-row items-start mt-10 ml-10 space-y-4 lg:space-y-0 lg:space-x-4">
-          <img
-            className="hidden lg:block w-full lg:w-1/2 h-auto lg:h-64 object-scale-down"
-            src="https://i.postimg.cc/9fZwN66H/Pngtree-cute-cozy-colorful-snow-winter-13375397.png"
-            alt="teste"
-          />
-          <Card
-            title="Título do Card"
-            description="Esta é uma pequena descrição do card. Pode conter qualquer tipo de informação relevante."
-            imageUrl="https://i.imgur.com/Ygpa0En.png"
-          />
+        <div className="container mx-auto">
+          <div className="items-center mt-20 ml-10">
+            <h2 className="text-3xl md:text-5xl font-bold mb-4">
+              Explora Solaris
+            </h2>
+          </div>
+          <div className="flex flex-col lg:flex-row items-start mt-10 ml-10 space-y-4 lg:space-y-0 lg:space-x-4">
+            <Card
+              title="Título do Card"
+              description="Esta é uma pequena descrição do card. Pode conter qualquer tipo de informação relevante."
+              imageUrl="https://i.imgur.com/Ygpa0En.png"
+            />
+            <img
+              className="hidden lg:block w-full lg:w-1/2 h-auto lg:h-64 object-cover"
+              src="https://i.postimg.cc/9fZwN66H/Pngtree-cute-cozy-colorful-snow-winter-13375397.png"
+              alt="teste"
+            />
+          </div>
+          <div className="flex flex-col lg:flex-row items-start mt-10 ml-10 space-y-4 lg:space-y-0 lg:space-x-4">
+            <img
+              className="hidden lg:block w-full lg:w-1/2 h-auto lg:h-64 object-scale-down"
+              src="https://i.postimg.cc/9fZwN66H/Pngtree-cute-cozy-colorful-snow-winter-13375397.png"
+              alt="teste"
+            />
+            <Card
+              title="Título do Card"
+              description="Esta é uma pequena descrição do card. Pode conter qualquer tipo de informação relevante."
+              imageUrl="https://i.imgur.com/Ygpa0En.png"
+            />
+          </div>
         </div>
       </section>
 
@@ -124,8 +125,11 @@ function Home() {
             </h2>
           </div>
           <div className="p-5">
-          <CarouselComponent />
-        </div>
+            <h3 className="text-2xl font-bold mb-4">titulo</h3>
+          <div className="p-5 border-x-2">
+            <CarouselComponent />
+            </div>
+          </div>
         </div>
       </section>
 
